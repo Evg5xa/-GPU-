@@ -1607,48 +1607,6 @@ for i, mic in enumerate(microphones):
     if 'frequency_response' in mic:
          print(f"  Частотная характеристика: {mic['frequency_response']}")
 
-# # ========== ТЕСТОВЫЙ РАСЧЕТ ==========
-# print("\n" + "="*60)
-# print("ТЕСТОВЫЙ РАСЧЕТ ЧАСТОТНОЙ ЗАВИСИМОСТИ")
-# print("="*60)
-#
-# # Берем коэффициенты для ковра (используем новый табличный)
-# if 'ковёр_табличный' in MATERIAL_LIBRARY:
-#     carpet_absorption = MATERIAL_LIBRARY['ковёр_табличный']['absorption']
-#     carpet_diffusion = MATERIAL_LIBRARY['ковёр_табличный']['diffusion']
-# else:
-#     # Если нет табличного, используем другой доступный материал
-#     carpet_absorption = MATERIAL_LIBRARY['ковёр']['absorption']
-#     carpet_diffusion = MATERIAL_LIBRARY['ковёр']['diffusion']
-#
-# carpet_reflection = [1 - a - d for a, d in zip(carpet_absorption, carpet_diffusion)]
-# carpet_reflection = [max(0.0, min(1.0, r)) for r in carpet_reflection]
-#
-# print("\nКоэффициенты отражения для ковра:")
-# for i, freq in enumerate(FREQUENCY_BANDS):
-#     print(f"  {freq:5.0f} Гц: {carpet_reflection[i]:.3f}")
-#
-# initial_energy = 5.0
-# print(f"\nНачальная энергия: {initial_energy} на всех частотах")
-#
-# energy_after_1 = [initial_energy * r for r in carpet_reflection]
-# print("\nЭнергия ПОСЛЕ ПЕРВОГО ОТРАЖЕНИЯ:")
-# for i, freq in enumerate(FREQUENCY_BANDS):
-#     print(f"  {freq:5.0f} Гц: {energy_after_1[i]:.4f}")
-#
-# base = energy_after_1[0] if energy_after_1[0] > 0 else 1
-# print("\nОтносительно 32 Гц (должно быть):")
-# for i, freq in enumerate(FREQUENCY_BANDS):
-#     ratio = energy_after_1[i] / base
-#     print(f"  {freq:5.0f} Гц: {ratio:.4f}")
-#
-# energy_after_2 = [e * r for e, r in zip(energy_after_1, carpet_reflection)]
-# print("\nЭнергия ПОСЛЕ ВТОРОГО ОТРАЖЕНИЯ:")
-# for i, freq in enumerate(FREQUENCY_BANDS):
-#     print(f"  {freq:5.0f} Гц: {energy_after_2[i]:.6f}")
-#
-# print("="*60)
-
 print(f"\n=== СВОДКА ===")
 print(f"Устройство: {device}")
 print(f"Общее время выполнения: {simulation_time:.2f} сек")
