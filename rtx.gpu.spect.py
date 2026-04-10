@@ -1506,11 +1506,11 @@ if reflection_coeffs_tensor is not None:
     # Принудительно отправляем на правильное устройство
     reflection_coeffs_tensor = reflection_coeffs_tensor.to(device)
 else:
-    print("  ⚠️ КРИТИЧЕСКАЯ ОШИБКА: reflection_coeffs_tensor = None!")
+    print(" КРИТИЧЕСКАЯ ОШИБКА: reflection_coeffs_tensor = None!")
     # Создаем заглушку для ковра
     carpet_reflection = [0.75, 0.67, 0.55, 0.35, 0.10, 0.0, 0.0, 0.0, 0.0, 0.0]
     reflection_coeffs_tensor = torch.tensor([carpet_reflection] * 4, device=device)
-    print(f"  ✅ Создана заглушка: {reflection_coeffs_tensor[0].cpu().numpy()}")
+    print(f" Создана заглушка: {reflection_coeffs_tensor[0].cpu().numpy()}")
 
 for i in range(rayCount):
     angle = minAngle + i * (maxAngle - minAngle) / max(1, rayCount - 1)
